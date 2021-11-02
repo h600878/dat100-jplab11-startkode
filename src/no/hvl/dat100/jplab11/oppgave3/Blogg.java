@@ -40,7 +40,7 @@ public class Blogg {
 
 	public boolean finnes(Innlegg innlegg) {
 
-		if (nesteLedig != 0) {
+		if (nesteLedig > 0) {
 			for (int i = 0; i < nesteLedig; i++) {
 				if (innleggTabell[i].erLik(innlegg)) {
 					return true;
@@ -69,7 +69,7 @@ public class Blogg {
 
 		String s = "";
 
-		if (nesteLedig != 0) {
+		if (nesteLedig > 0) {
 			for (int i = 0; i < nesteLedig; i++) {
 				s += innleggTabell[i];
 			}
@@ -80,18 +80,49 @@ public class Blogg {
 	// valgfrie oppgaver nedenfor
 	
 	public void utvid() {
-		throw new UnsupportedOperationException(TODO.method());
+
+		Blogg nyInnleggTabell = new Blogg(innleggTabell.length * 2);
+
+		if (nesteLedig > 0) {
+			for (int i = 0; i < innleggTabell.length; i++) {
+				nyInnleggTabell.getSamling()[i] = innleggTabell[i];
+			}
+			innleggTabell = nyInnleggTabell.getSamling();
+		}
 	}
 	
 	public boolean leggTilUtvid(Innlegg innlegg) {
 
-		throw new UnsupportedOperationException(TODO.method());
-		
+		if (ledigPlass() ) {
+			if (!finnes(innlegg) ) {
+				leggTil(innlegg);
+				return true;
+			}
+		}
+		else {
+			utvid();
+			leggTil(innlegg);
+			return true;
+		}
+		return false;
 	}
 	
 	public boolean slett(Innlegg innlegg) {
-		
-		throw new UnsupportedOperationException(TODO.method());
+
+		int i = finnInnlegg(innlegg);
+
+		if (nesteLedig > 0) {
+
+			nesteLedig--;
+
+			for (; i < nesteLedig; i++) {
+				innleggTabell[nesteLedig] = innleggTabell[nesteLedig + 1];
+			}
+
+			innleggTabell[nesteLedig] = null;
+			return true;
+		}
+		return false;
 	}
 	
 	public int[] search(String keyword) {
