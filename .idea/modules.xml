@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/dat100-jplab11-startkode.iml" filepath="$PROJECT_DIR$/dat100-jplab11-startkode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../dat100-jplab11-testing/dat100-jplab11-testing.iml" filepath="$PROJECT_DIR$/../dat100-jplab11-testing/dat100-jplab11-testing.iml" />
     </modules>
   </component>
 </project>

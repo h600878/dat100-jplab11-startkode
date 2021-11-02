@@ -3,6 +3,9 @@
   <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/bin" />
     <exclude-output />
+    <javadoc-paths>
+      <root url="file://$USER_HOME$/DAT100/Git-files/dat100public/programmering/jplab11" />
+    </javadoc-paths>
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
