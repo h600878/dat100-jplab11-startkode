@@ -49,19 +49,17 @@ public abstract class Innlegg {
 	}
 	
 	public void doLike () {
-		throw new UnsupportedOperationException(TODO.method());
+		likes++;
 	}
 	
 	public boolean erLik(Innlegg innlegg) {
-		throw new UnsupportedOperationException(TODO.method());
-
+		return this == innlegg;
 	}
 	
 	@Override
-	public String toString() {
+	public String toString() { /*skriv ut paa formen: "1\nOle Olsen\n23-10\n7\n"*/
 		
 		throw new UnsupportedOperationException(TODO.method());
-				
 	}
 	
 	// Metoden nedenfor er kun for valgfri oppgave 6
