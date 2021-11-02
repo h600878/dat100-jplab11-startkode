@@ -3,8 +3,9 @@ package no.hvl.dat100.jplab11.oppgave1;
 import no.hvl.dat100.jplab11.common.TODO;
 
 public abstract class Innlegg {
-	
-	// TODO - deklarering av objektvariable
+
+	private int id, likes;
+	private String bruker, dato;
 	
 	public Innlegg() {
 		
