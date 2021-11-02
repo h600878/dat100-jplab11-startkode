@@ -53,13 +53,16 @@ public abstract class Innlegg {
 	}
 	
 	public boolean erLik(Innlegg innlegg) {
-		return this == innlegg;
+		return this.id == innlegg.id;
 	}
 	
 	@Override
 	public String toString() { /*skriv ut paa formen: "1\nOle Olsen\n23-10\n7\n"*/
-		
-		throw new UnsupportedOperationException(TODO.method());
+
+		return 	id + '\n' +
+				bruker + '\n' +
+				dato + '\n' +
+				likes + '\n';
 	}
 	
 	// Metoden nedenfor er kun for valgfri oppgave 6
