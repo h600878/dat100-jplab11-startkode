@@ -89,8 +89,18 @@ public class Blogg {
 	}
 	
 	public int[] search(String keyword) {
-		
-		throw new UnsupportedOperationException(TODO.method());
-
+		int antall = 0;
+		for (int i = 0; i < nesteLedig; i++){
+			if (innleggTabell[i].toString().contains(keyword)){
+				antall ++;
+			}
+		}
+		int[]tab = new int[antall];
+		for (int i = 0; i < antall; i++){
+			if (innleggTabell[i].toString().contains(keyword)){
+				tab[i] = innleggTabell[i].getId();
+			}
+		}
+		return tab;
 	}
 }
