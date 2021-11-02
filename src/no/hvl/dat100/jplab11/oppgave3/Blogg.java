@@ -28,25 +28,47 @@ public class Blogg {
 	
 	public int finnInnlegg(Innlegg innlegg) {
 
-		throw new UnsupportedOperationException(TODO.method());
+		if (finnes(innlegg) ) {
+			for (int i = 0; i < nesteLedig; i++) {
+				if (innleggTabell[i].erLik(innlegg) ) {
+					return i;
+				}
+			}
+		}
+		return -1;
 	}
 
 	public boolean finnes(Innlegg innlegg) {
-		throw new UnsupportedOperationException(TODO.method());
+
+		if (nesteLedig != 0) {
+			for (int i = 0; i < nesteLedig; i++) {
+				if (innleggTabell[i].erLik(innlegg)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	public boolean ledigPlass() {
-		throw new UnsupportedOperationException(TODO.method());
+		return nesteLedig < innleggTabell.length;
 
 	}
 	
 	public boolean leggTil(Innlegg innlegg) {
 
-		throw new UnsupportedOperationException(TODO.method());
+		if (ledigPlass() ) {
+			innleggTabell[nesteLedig] = innlegg;
+			nesteLedig++;
+			return true;
+		}
+		return false;
 	}
-	
+
+	//2\nTEKST\n1\nOle Olsen\n23-10\n0\nen tekst\nBILDE\n2\nOline Olsen\n24-10\n0\net bilde\nhttp://www.picture.com/oo.jpg\n
 	public String toString() {
-		throw new UnsupportedOperationException(TODO.method());
+
+		return null;
 	}
 
 	// valgfrie oppgaver nedenfor
