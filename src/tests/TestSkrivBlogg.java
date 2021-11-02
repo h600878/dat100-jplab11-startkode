@@ -11,7 +11,7 @@ import no.hvl.dat100.jplab11.oppgave4.*;
 
 public class TestSkrivBlogg {
 
-	private static String FILNAVN = "blog.da";
+	private static String FILNAVN = "blogg.dat";
 	private static String MAPPE = System.getProperty("user.dir") + "/src/no/hvl/dat100/tests/";
 
 	@Test

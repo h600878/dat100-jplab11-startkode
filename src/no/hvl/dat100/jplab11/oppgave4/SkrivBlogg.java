@@ -25,7 +25,7 @@ public class SkrivBlogg {
 
 				for (int i = 0; i < samling.getAntall(); i++){
 
-				skriver.print(samling.toString());
+					skriver.print(samling.toString());
 
 				}
 
@@ -37,8 +37,13 @@ public class SkrivBlogg {
 
 		catch (FileNotFoundException e){
 
-		skriver.print("Fant ikke filen :(");
+			skriver.print("Fant ikke filen :(");
 
+		}
+		finally {
+			if (skriver != null) {
+				skriver.close();
+			}
 		}
 
 		return utført;
