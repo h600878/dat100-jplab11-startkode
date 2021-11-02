@@ -58,11 +58,10 @@ public abstract class Innlegg {
 	
 	@Override
 	public String toString() { /*skriv ut paa formen: "1\nOle Olsen\n23-10\n7\n"*/
-
-		return 	id + '\n' +
+		return 	id + "\n" +
 				bruker + '\n' +
 				dato + '\n' +
-				likes + '\n';
+				likes + "\n";
 	}
 	
 	// Metoden nedenfor er kun for valgfri oppgave 6

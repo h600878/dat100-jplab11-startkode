@@ -67,6 +67,7 @@ public class TestInnlegg {
 		
 		TInnlegg innlegg = new TInnlegg(1,"Ole Olsen","23-10");
 
+		System.out.println(innlegg);
 		assertEquals("1\nOle Olsen\n23-10\n0\n",innlegg.toString());
 
 	}
