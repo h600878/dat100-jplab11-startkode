@@ -52,7 +52,6 @@ public class Blogg {
 
 	public boolean ledigPlass() {
 		return nesteLedig < innleggTabell.length;
-
 	}
 	
 	public boolean leggTil(Innlegg innlegg) {
@@ -68,7 +67,14 @@ public class Blogg {
 	//2\nTEKST\n1\nOle Olsen\n23-10\n0\nen tekst\nBILDE\n2\nOline Olsen\n24-10\n0\net bilde\nhttp://www.picture.com/oo.jpg\n
 	public String toString() {
 
-		return null;
+		String s = "";
+
+		if (nesteLedig != 0) {
+			for (int i = 0; i < nesteLedig; i++) {
+				s += innleggTabell[i];
+			}
+		}
+		return 	nesteLedig + "\n" + s;
 	}
 
 	// valgfrie oppgaver nedenfor
