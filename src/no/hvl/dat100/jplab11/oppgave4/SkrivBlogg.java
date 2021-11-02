@@ -23,14 +23,8 @@ public class SkrivBlogg {
 
 			if (samling.getAntall() > 0){
 
-				for (int i = 0; i < samling.getAntall(); i++){
-
-					skriver.print(samling.toString());
-
-				}
-
+				skriver.print(samling.toString());
 				utført = true;
-
 			}
 
 		}
