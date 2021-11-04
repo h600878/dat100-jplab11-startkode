@@ -13,7 +13,7 @@ public class SkrivBlogg {
 
 	public static boolean skriv(Blogg samling, String mappe, String filnavn) {
 
-		File file = new File(filnavn);
+		File file = new File(filnavn); //TODO Skal vi bruke String mappe parameter?
 		PrintWriter skriver = null;
 		Boolean utført = false;
 
@@ -31,7 +31,7 @@ public class SkrivBlogg {
 
 		catch (FileNotFoundException e){
 
-			skriver.print("Fant ikke filen :(");
+			System.out.println("Fant ikke filen :(");
 
 		}
 		finally {
