@@ -19,7 +19,7 @@ public class SkrivBlogg {
 
 			if (samling.getAntall() > 0){
 
-				skriver.print(samling.toString());
+				skriver.print(samling);
 				utført = true;
 			}
 
