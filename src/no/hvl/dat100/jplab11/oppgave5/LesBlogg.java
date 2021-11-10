@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import no.hvl.dat100.jplab11.oppgave1.*;
@@ -22,8 +23,9 @@ public class LesBlogg {
 	public static Blogg les(String mappe, String filnavn) {
 
 		Blogg blogg = null;
+		File fil = new File( mappe + filnavn);
 
-		try (Scanner leser = new Scanner(filnavn) ) {
+		try (Scanner leser = new Scanner(fil) ) { //TODO leser hopper over flere linjer av og til🤔
 			int antallInnlegg = leser.nextInt(); //Henter antall innlegg på første linje
 			blogg = new Blogg(antallInnlegg);
 
@@ -37,7 +39,7 @@ public class LesBlogg {
 
 					while (leser.hasNextLine() ) {
 						tekst += leser.nextLine();
-						if (leser.nextLine().equals(BILDE) ) {
+						if (leser.nextLine().equals(BILDE)) {
 							break;
 						}
 					}
@@ -50,7 +52,7 @@ public class LesBlogg {
 					int liker = leser.nextInt();
 					String tekst = "";
 
-					while (leser.hasNextLine() ) {
+					while (leser.hasNextLine()) {
 						tekst += leser.nextLine();
 						if (leser.nextLine().contains("http") ) {
 							break;
@@ -61,7 +63,18 @@ public class LesBlogg {
 				}
 			}
 		}
-		catch (Exception ignored) {}
+		catch (NullPointerException e) {
+			System.out.println("Error!");
+		}
+		catch (InputMismatchException e) {
+			System.out.println("Feil input!");
+		}
+		catch (NumberFormatException e) {
+			System.out.println("Feil format!!!!");
+		}
+		catch (FileNotFoundException e) {
+			System.out.println("Fil ikke funnet!");
+		}
 
 		return blogg;
 	}
