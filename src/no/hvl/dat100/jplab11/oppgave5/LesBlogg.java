@@ -24,34 +24,44 @@ public class LesBlogg {
 		Blogg blogg = null;
 
 		try (Scanner leser = new Scanner(filnavn) ) {
-			blogg = new Blogg(leser.nextInt() ); //Henter antall innlegg på første linje
+			int antallInnlegg = leser.nextInt(); //Henter antall innlegg på første linje
+			blogg = new Blogg(antallInnlegg);
 
-			if (leser.nextLine().equals(TEKST) ) {
-				int id = leser.nextInt();
-				String bruker = leser.nextLine();
-				String dato = leser.nextLine();
+			for (int i = 0; i < antallInnlegg; i++) {
+				if (leser.nextLine().equals(TEKST) ) {
+					int id = leser.nextInt();
+					String bruker = leser.nextLine();
+					String dato = leser.nextLine();
+					int liker = leser.nextInt();
+					String tekst = "";
 
-				while (leser.hasNextLine() ) {
-
-
-					if (leser.nextLine().equals(BILDE) ) {
-						break;
+					while (leser.hasNextLine() ) {
+						tekst += leser.nextLine();
+						if (leser.nextLine().equals(BILDE) ) {
+							break;
+						}
 					}
+					blogg.leggTil(new Tekst(id, bruker, dato, liker, tekst) );
 				}
-				Tekst tekst = new Tekst(id, bruker, dato, tekst);
-			}
-			else if (leser.nextLine().equals(BILDE)) {
-				Bilde bilde;
-				while (!leser.nextLine().equals(TEKST)) {
+				else if (leser.nextLine().equals(BILDE)) {
+					int id = leser.nextInt();
+					String bruker = leser.nextLine();
+					String dato = leser.nextLine();
+					int liker = leser.nextInt();
+					String tekst = "";
 
+					while (leser.hasNextLine() ) {
+						tekst += leser.nextLine();
+						if (leser.nextLine().contains("http") ) {
+							break;
+						}
+					}
+					String url = leser.nextLine();
+					blogg.leggTil(new Bilde(id, bruker, dato, liker, tekst, url) );
 				}
 			}
 		}
 		catch (Exception ignored) {}
-
-		//blogg.leggTil();
-		System.out.println(blogg);
-
 
 		return blogg;
 	}
