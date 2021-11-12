@@ -26,15 +26,15 @@ public class LesBlogg {
 		File fil = new File( mappe + filnavn);
 
 		try (Scanner leser = new Scanner(fil) ) { //TODO leser hopper over flere linjer av og til🤔
-			int antallInnlegg = leser.nextInt(); //Henter antall innlegg på første linje
+			int antallInnlegg = Integer.parseInt(leser.nextLine() ); //Henter antall innlegg på første linje
 			blogg = new Blogg(antallInnlegg);
 
 			for (int i = 0; i < antallInnlegg; i++) {
 				if (leser.nextLine().equals(TEKST) ) {
-					int id = leser.nextInt();
+					int id = Integer.parseInt(leser.nextLine() );
 					String bruker = leser.nextLine();
 					String dato = leser.nextLine();
-					int liker = leser.nextInt();
+					int liker = Integer.parseInt(leser.nextLine() );
 					String tekst = "";
 
 					while (leser.hasNextLine() ) {
@@ -46,10 +46,10 @@ public class LesBlogg {
 					blogg.leggTil(new Tekst(id, bruker, dato, liker, tekst) );
 				}
 				else if (leser.nextLine().equals(BILDE)) {
-					int id = leser.nextInt();
+					int id = Integer.parseInt(leser.nextLine() );
 					String bruker = leser.nextLine();
 					String dato = leser.nextLine();
-					int liker = leser.nextInt();
+					int liker = Integer.parseInt(leser.nextLine() );
 					String tekst = "";
 
 					while (leser.hasNextLine()) {
