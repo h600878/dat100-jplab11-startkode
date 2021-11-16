@@ -9,7 +9,7 @@ public class SkrivBlogg {
 
 	public static boolean skriv(Blogg samling, String mappe, String filnavn) {
 
-		File file = new File(filnavn); //TODO Skal vi bruke String mappe parameter?
+		File file = new File(mappe, filnavn); //TODO Skal vi bruke String mappe parameter?
 		PrintWriter skriver = null;
 		Boolean utført = false;
 
