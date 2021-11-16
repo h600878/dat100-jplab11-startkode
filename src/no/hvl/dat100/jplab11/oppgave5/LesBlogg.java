@@ -17,6 +17,8 @@ import javax.swing.JOptionPane;
 
 public class LesBlogg {
 
+	private static int i = 0;
+
 	private static final String TEKST = "TEKST";
 	private static final String BILDE = "BILDE";
 
@@ -29,37 +31,12 @@ public class LesBlogg {
 			int antallInnlegg = Integer.parseInt(leser.nextLine() ); //Henter antall innlegg på første linje
 			blogg = new Blogg(antallInnlegg);
 
-			for (int i = 0; i < antallInnlegg; i++) {
+			for (; i < antallInnlegg; i++) {
 				if (leser.nextLine().equals(TEKST) ) {
-					int id = Integer.parseInt(leser.nextLine() );
-					String bruker = leser.nextLine();
-					String dato = leser.nextLine();
-					int liker = Integer.parseInt(leser.nextLine() );
-					String tekst = "";
-
-					while (leser.hasNextLine() ) {
-						tekst += leser.nextLine();
-						if (leser.nextLine().equals(BILDE)) {
-							break;
-						}
-					}
-					blogg.leggTil(new Tekst(id, bruker, dato, liker, tekst) );
+					lesTekst(leser, blogg);
 				}
-				else if (leser.nextLine().equals(BILDE)) {
-					int id = Integer.parseInt(leser.nextLine() );
-					String bruker = leser.nextLine();
-					String dato = leser.nextLine();
-					int liker = Integer.parseInt(leser.nextLine() );
-					String tekst = "";
-
-					while (leser.hasNextLine()) {
-						tekst += leser.nextLine();
-						if (leser.nextLine().contains("http") ) {
-							break;
-						}
-					}
-					String url = leser.nextLine();
-					blogg.leggTil(new Bilde(id, bruker, dato, liker, tekst, url) );
+				else if (leser.nextLine().equals(BILDE) ) {
+					lesBilde(leser, blogg);
 				}
 			}
 		}
@@ -77,5 +54,40 @@ public class LesBlogg {
 		}
 
 		return blogg;
+	}
+
+	private static void lesTekst(Scanner leser, Blogg blogg) {
+		int id = Integer.parseInt(leser.nextLine() );
+		String bruker = leser.nextLine();
+		String dato = leser.nextLine();
+		int liker = Integer.parseInt(leser.nextLine() );
+		String tekst = "";
+
+		boolean bilde = false;
+
+		while (leser.hasNextLine() ) {
+			tekst += leser.nextLine();
+			if (leser.nextLine().equals(BILDE) ) {
+				bilde = true;
+				break;
+			}
+		}
+		blogg.leggTil(new Tekst(id, bruker, dato, liker, tekst) );
+		if (bilde) {
+			i++;
+			lesBilde(leser, blogg);
+		}
+	}
+
+	private static void lesBilde(Scanner leser, Blogg blogg) {
+		int id = Integer.parseInt(leser.nextLine() );
+		String bruker = leser.nextLine();
+		String dato = leser.nextLine();
+		int liker = Integer.parseInt(leser.nextLine() );
+		String tekst = "";
+
+		tekst += leser.nextLine();
+		String url = leser.nextLine();
+		blogg.leggTil(new Bilde(id, bruker, dato, liker, tekst, url) );
 	}
 }
